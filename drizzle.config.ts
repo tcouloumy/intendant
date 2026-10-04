@@ -14,4 +14,5 @@ export default defineConfig({
 		url: process.env.DATABASE_URL!,
 	},
 	schemaFilter: ["app"],
+	casing: "snake_case",
 });
