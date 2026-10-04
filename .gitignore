@@ -24,3 +24,7 @@ dist/
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# Tanstack Start
+.nitro
+dist-ssr
