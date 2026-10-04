@@ -1,0 +1,26 @@
+# Personal, never public
+specs/
+CLAUDE.local.md
+
+# Secrets
+.env*
+!.env.example
+
+# Real bank exports (test fixtures must be fake and live under fixtures/)
+*.csv
+*.ofx
+*.pdf
+!**/fixtures/**
+
+# Deps & build
+node_modules/
+dist/
+.output/
+.vinxi/
+.tanstack/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
