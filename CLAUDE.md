@@ -16,6 +16,9 @@ Personal finance web app with an AI assistant: import bank CSV exports, auto-cat
 - File storage goes through the S3-compatible API.
 - Schema changes are migrations, committed with the code. Never edit the database by hand.
 
+### Code
+- After adding or generating files (shadcn / AI Elements `add`, TanStack CLI, or hand-written), run `pnpm exec biome check --write` before committing. Generators don't follow our Biome config.
+
 ### Data & security
 - Money is integer minor units (cents) plus a currency code. Never floats.
 - Data is scoped by household. Every query checks household membership in app code (no RLS).
