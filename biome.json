@@ -33,7 +33,12 @@
 					"options": {
 						"patterns": [
 							{
-								"group": ["@supabase/*", "@aws-sdk/*"],
+								"group": [
+									"@supabase/*",
+									"@aws-sdk/*",
+									"postgres",
+									"drizzle-orm/postgres-js"
+								],
 								"message": "Vendor SDKs are only imported in src/infra/ (see CLAUDE.md)."
 							}
 						]
