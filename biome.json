@@ -8,10 +8,12 @@
 	"files": {
 		"ignoreUnknown": false,
 		"includes": [
+			"drizzle.config.ts",
 			"**/src/**/*",
 			"**/.vscode/**/*",
 			"**/index.html",
 			"**/vite.config.ts",
+			"**/drizzle.config.ts",
 			"!**/src/routeTree.gen.ts",
 			"!**/src/styles.css"
 		]
