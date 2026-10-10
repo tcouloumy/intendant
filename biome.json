@@ -8,10 +8,12 @@
 	"files": {
 		"ignoreUnknown": false,
 		"includes": [
+			"drizzle.config.ts",
 			"**/src/**/*",
 			"**/.vscode/**/*",
 			"**/index.html",
 			"**/vite.config.ts",
+			"**/drizzle.config.ts",
 			"!**/src/routeTree.gen.ts",
 			"!**/src/styles.css"
 		]
@@ -31,7 +33,12 @@
 					"options": {
 						"patterns": [
 							{
-								"group": ["@supabase/*", "@aws-sdk/*"],
+								"group": [
+									"@supabase/*",
+									"@aws-sdk/*",
+									"postgres",
+									"drizzle-orm/postgres-js"
+								],
 								"message": "Vendor SDKs are only imported in src/infra/ (see CLAUDE.md)."
 							}
 						]
