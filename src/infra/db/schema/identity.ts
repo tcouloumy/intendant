@@ -1,15 +1,12 @@
 import {
 	index,
-	pgSchema,
-	primaryKey,
 	text,
 	timestamp,
 	unique,
 	uuid,
 	varchar,
 } from "drizzle-orm/pg-core";
-
-export const app = pgSchema("app");
+import { app } from "./app";
 
 export const householdMemberRole = app.enum("household_member_role", [
 	"owner",
