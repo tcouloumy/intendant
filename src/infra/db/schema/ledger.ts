@@ -1,7 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
 	bigint,
-	char,
 	check,
 	date,
 	foreignKey,
@@ -21,6 +20,8 @@ export const categorizationSource = app.enum("categorization_source", [
 	"user",
 ]);
 
+export const currency = app.enum("currency", ["EUR"]);
+
 export const bankAccountsTable = app.table(
 	"bank_accounts",
 	{
@@ -30,7 +31,7 @@ export const bankAccountsTable = app.table(
 			.notNull(),
 		name: varchar({ length: 64 }).notNull(),
 		accountNumber: varchar({ length: 34 }),
-		currency: char({ length: 3 }).notNull(),
+		currency: currency().notNull(),
 		createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
 	},
 	(t) => [
@@ -45,7 +46,11 @@ export const bankAccountsTable = app.table(
 		),
 		// Target of the composite FKs that keep children in the same household.
 		unique("bank_accounts_id_household_id_unique").on(t.id, t.householdId),
-		check("bank_accounts_currency_check", sql`${t.currency} ~ '^[A-Z]{3}$'`),
+		unique("bank_accounts_id_household_id_currency_unique").on(
+			t.id,
+			t.householdId,
+			t.currency,
+		),
 	],
 );
 
@@ -77,7 +82,7 @@ export const transactionsTable = app.table(
 		labelNormalized: text().notNull(),
 		// Signed minor units: negative = debit.
 		amountMinor: bigint({ mode: "number" }).notNull(),
-		currency: char({ length: 3 }).notNull(),
+		currency: currency().notNull(),
 		// Numbers identical rows within one export, so they survive dedupe.
 		occurrence: smallint().notNull().default(1),
 		categoryId: uuid(),
@@ -87,8 +92,12 @@ export const transactionsTable = app.table(
 	(t) => [
 		foreignKey({
 			name: "transactions_bank_account_fk",
-			columns: [t.bankAccountId, t.householdId],
-			foreignColumns: [bankAccountsTable.id, bankAccountsTable.householdId],
+			columns: [t.bankAccountId, t.householdId, t.currency],
+			foreignColumns: [
+				bankAccountsTable.id,
+				bankAccountsTable.householdId,
+				bankAccountsTable.currency,
+			],
 		}).onDelete("cascade"),
 		// No action: deleting a category in use must fail until its transactions are moved.
 		foreignKey({
@@ -107,7 +116,6 @@ export const transactionsTable = app.table(
 			t.householdId,
 			t.bookedOn,
 		),
-		check("transactions_currency_check", sql`${t.currency} ~ '^[A-Z]{3}$'`),
 		check(
 			"transactions_categorized_check",
 			sql`(${t.categoryId} is null) = (${t.categorizedBy} is null)`,

@@ -1,5 +1,6 @@
 import {
 	foreignKey,
+	index,
 	integer,
 	jsonb,
 	text,
@@ -82,5 +83,6 @@ export const importRowsTable = app.table(
 			t.importId,
 			t.lineNumber,
 		),
+		index("import_rows_transaction_id_idx").on(t.transactionId),
 	],
 );
