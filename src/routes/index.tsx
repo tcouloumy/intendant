@@ -7,8 +7,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { getBankaccounts } from "@/features/bank-accounts/bank-accounts.functions";
 
-export const Route = createFileRoute("/")({ component: Dashboard });
+export const Route = createFileRoute("/")({
+	component: Dashboard,
+	loader: () => getBankaccounts(),
+});
 
 const placeholders = [
 	{ title: "Balance", description: "All accounts" },
@@ -16,7 +20,11 @@ const placeholders = [
 	{ title: "To review", description: "Uncategorized transactions" },
 ];
 
+const { useLoaderData } = Route;
+
 function Dashboard() {
+	const accounts = useLoaderData();
+
 	return (
 		<main className="mx-auto max-w-5xl space-y-6 p-6">
 			<header className="flex items-center justify-between">
@@ -29,6 +37,19 @@ function Dashboard() {
 						<CardHeader>
 							<CardTitle>{p.title}</CardTitle>
 							<CardDescription>{p.description}</CardDescription>
+						</CardHeader>
+						<CardContent className="text-3xl font-semibold text-muted-foreground">
+							—
+						</CardContent>
+					</Card>
+				))}
+			</section>
+
+			<section>
+				{accounts.map((account) => (
+					<Card key={account.id}>
+						<CardHeader>
+							<CardTitle>{account.name}</CardTitle>
 						</CardHeader>
 						<CardContent className="text-3xl font-semibold text-muted-foreground">
 							—
