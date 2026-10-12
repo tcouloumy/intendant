@@ -7,11 +7,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { getBankaccounts } from "@/features/bank-accounts/bank-accounts.functions";
+import { getBankAccounts } from "@/features/bank-accounts/bank-accounts.functions";
 
 export const Route = createFileRoute("/")({
 	component: Dashboard,
-	loader: () => getBankaccounts(),
+	loader: () => getBankAccounts(),
 });
 
 const placeholders = [

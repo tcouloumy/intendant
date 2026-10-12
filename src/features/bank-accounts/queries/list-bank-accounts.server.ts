@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/infra/db/index.server";
 import { bankAccountsTable } from "@/infra/db/schema";
 
-export async function listBankAccounts(householdId: string) {
+export async function listBankAccountsQuery(householdId: string) {
 	return db
 		.select({
 			id: bankAccountsTable.id,
