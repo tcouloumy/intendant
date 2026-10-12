@@ -10,6 +10,7 @@
 		"includes": [
 			"drizzle.config.ts",
 			"**/src/**/*",
+			"**/scripts/**/*",
 			"**/.vscode/**/*",
 			"**/index.html",
 			"**/vite.config.ts",
