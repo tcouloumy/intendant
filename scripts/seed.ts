@@ -1,7 +1,7 @@
 // Resets the app schema and fills it with fake data for local dev. Never real data.
 import process from "node:process";
 import { sql } from "drizzle-orm";
-import { db } from "../src/infra/db";
+import { db } from "../src/infra/db/index.server";
 import {
 	bankAccountsTable,
 	categoriesTable,
