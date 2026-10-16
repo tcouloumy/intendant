@@ -27,6 +27,7 @@
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "csv-parse": "^7.0.3",
+    "date-fns": "^4.4.0",
     "drizzle-orm": "^0.45.3",
     "postgres": "^3.4.9",
     "radix-ui": "^1.6.7",

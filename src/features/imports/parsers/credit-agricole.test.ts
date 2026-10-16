@@ -77,7 +77,7 @@ describe("decode", () => {
 	});
 });
 
-describe.only("creditAgricoleParser.parse", () => {
+describe("creditAgricoleParser.parse", () => {
 	it("reads the account number from the preamble", () => {
 		expect(parser.parse(original).accountNumber).toBe("00000000001");
 	});
@@ -122,12 +122,13 @@ describe("creditAgricoleParser.normalize", () => {
 	});
 
 	it.each([
+		["5", 500],
 		["12", 1200],
 		["12,5", 1250],
 		["0,99", 99],
 		["1 234,56", 123456],
-		["1 234,56", 123456],
-		["1 234,56", 123456],
+		["1\u00a0234,56", 123456],
+		["1\u202f234,56", 123456],
 	])("reads amount %j as %i minor units", (amount, minor) => {
 		expect(parser.normalize(row(amount, "")).amountMinor).toBe(-minor);
 		expect(parser.normalize(row("", amount)).amountMinor).toBe(minor);
@@ -147,6 +148,7 @@ describe("creditAgricoleParser.normalize", () => {
 	it("rejects rows with both or neither amounts", () => {
 		expect(() => parser.normalize(row("1,00", "1,00"))).toThrow();
 		expect(() => parser.normalize(row("", ""))).toThrow();
+		expect(() => parser.normalize(row("0,00", "5,00"))).toThrow();
 	});
 
 	it.each([
