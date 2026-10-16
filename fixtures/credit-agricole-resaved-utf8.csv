@@ -1,0 +1,59 @@
+;;;;
+Téléchargement du 02/04/2026;;;;
+;;;;
+;;;;
+MONSIEUR DUPONT JEAN;;;;
+Compte de Dépôt carte n° 00000000001;;;;
+Solde au 02/04/2026 1 234,56 €;;;;
+;;;;
+Liste des opérations du compte entre le 01/03/2026 et le 31/03/2026;;;;
+;;;;
+Date;Libellé;Débit euros;Crédit euros;
+31/03/2026;"Paiement par carte
+X0000 FAUXMARCHE PARIS  30/03 - Fauxmarché
+
+
+
+";42,17;;
+31/03/2026;"Virement en votre faveur
+VIR INST de ACME SAS - 0326 Salaire JEAN DUPONT
+
+
+
+";;2 345,67;
+30/03/2026;"Prélèvement
+0000000 ELECTRICITE DE NULLE PART - ECHEANCE 03/2026 CONTRAT N° 0000";61,30;;
+30/03/2026;"Paiement par carte
+X0000 BOULANGERIE DU COIN 29/03 - Boulangerie
+
+
+
+";3,20;;
+30/03/2026;"Paiement par carte
+X0000 BOULANGERIE DU COIN 29/03 - Boulangerie
+
+
+
+";3,20;;
+28/03/2026;"Retrait au distributeur
+X0000 PARIS 27/03 10H42 - Retrait d'espèces
+
+
+
+";60,00;;
+27/03/2026;"Virement émis
+VIR INST vers JEAN DUPONT; épargne
+
+
+
+";1 000,00;;
+26/03/2026;"Prélèvement
+FAUXOPERATEUR - FAUXOPERATEUR Prlvt SEPA
+
+
+
+";19,99;;
+25/03/2026;"Virement en votre faveur
+CPAM 00";;8,50;
+02/03/2026;"Avoir carte
+X0000 FAUXMARCHE PARIS 01/03 - Fauxmarché";;12,40;
